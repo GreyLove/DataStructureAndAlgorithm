@@ -1,0 +1,58 @@
+# // 面试题11：旋转数组的最小数字
+# // 题目：把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。
+# // 输入一个递增排序的数组的一个旋转，输出旋转数组的最小元素。例如数组
+# // {3, 4, 5, 1, 2}为{1, 2, 3, 4, 5}的一个旋转，该数组的最小值为1。
+
+def findMin1(a):
+    if not a or len(a) == 0:
+        return
+    mins = a[0]
+
+    for i in a:
+        if mins>i:
+            mins = i
+    
+    return mins
+
+def findMin(a):
+    if not a or len(a) == 0:
+        return
+    
+    i = 0
+    j = len(a)-1
+
+    m = 0
+    while i <= j:
+        m = (i+j)>>1
+        if a[m] == a[i] and a[m] == a[j]:
+            return  findMin1(a)
+        elif m == 0 or (m>0 and a[m] < a[m-1]):
+            return a[m]
+        elif a[m] >= a[i]:
+            i = m+1
+        elif a[m] <= a[j]:
+            j = m-1
+
+    return a[m]
+
+
+
+    
+
+
+
+min = findMin([1,2,3,4,5])
+print(min)
+        
+
+min = findMin([3, 4, 5, 1, 1, 2 ])
+print(min)
+
+min = findMin([3, 4, 5, 1, 2, 2 ])
+print(min)
+
+min = findMin([ 1, 0, 1, 1, 1 ])
+print(min)
+
+min = findMin([6])
+print(min)
