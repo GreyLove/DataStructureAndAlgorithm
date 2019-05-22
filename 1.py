@@ -47,5 +47,3 @@ if __name__ == "__main__":
     sort = BuildOder(config,sys.argv[1:])
     print(sort)
     
-sort = BuildOder(config,"KBCommon")
-print(sort)
